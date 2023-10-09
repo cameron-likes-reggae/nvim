@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["dracula.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\dracula.nvim",
+    url = "https://github.com/Mofiqul/dracula.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
