@@ -174,6 +174,11 @@ _G.packer_plugins = {
     path = "/home/cam/.local/share/nvim/site/pack/packer/start/vim-be-good",
     url = "https://github.com/ThePrimeagen/vim-be-good"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/cam/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-nightfly-colors"] = {
     loaded = true,
     path = "/home/cam/.local/share/nvim/site/pack/packer/start/vim-nightfly-colors",
