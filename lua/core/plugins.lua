@@ -13,31 +13,38 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  --use 'nvim-tree/nvim-tree.lua'
+
+  -- File icons for file explorer
   use 'nvim-tree/nvim-web-devicons'
+
+  -- Beautiful status bar
   use 'nvim-lualine/lualine.nvim'
-  --use 'feline-nvim/feline.nvim'
+
+  -- Nightfly colorsheme
   use {
     "bluz71/vim-nightfly-colors",
     name = "nightfly",
     lazy = false,
     priority = 1000
   }
+
+  -- File parsing
   use 'nvim-treesitter/nvim-treesitter'
+
+  -- Fuzzy file finding
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.3',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+
+  -- LSP Zero for Language servers
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     requires = {
-      --- Uncomment these if you want to manage LSP servers from neovim
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
-
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
       -- Autocompletion
@@ -46,22 +53,33 @@ return require('packer').startup(function(use)
       { 'L3MON4D3/LuaSnip' },
     }
   }
+
+  -- Show hunks in files
   use "lewis6991/gitsigns.nvim"
+
+  -- Practicing Vim motions
   use "ThePrimeagen/vim-be-good"
-  use "jeetsukumaran/vim-buffergator"
+
+  -- nerdcommenter for quick commenting of lines
   use "preservim/nerdcommenter"
+
+  -- Harpoon for quick file navigation
   use "ThePrimeagen/harpoon"
+
+  -- Dracula Colorscheme
   use "Mofiqul/dracula.nvim"
 
+  -- File Explorer Plugin
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     }
   }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

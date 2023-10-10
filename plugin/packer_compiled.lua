@@ -94,11 +94,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
@@ -178,11 +173,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-be-good",
     url = "https://github.com/ThePrimeagen/vim-be-good"
-  },
-  ["vim-buffergator"] = {
-    loaded = true,
-    path = "C:\\Users\\Cameron.Airlie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-buffergator",
-    url = "https://github.com/jeetsukumaran/vim-buffergator"
   },
   ["vim-nightfly-colors"] = {
     loaded = true,
