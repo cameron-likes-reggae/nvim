@@ -17,3 +17,6 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set('n', '<leader>t', ':terminal<CR>i')
+
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
