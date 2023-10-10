@@ -29,6 +29,6 @@ require("neo-tree").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>nf", "<cmd>Neotree<cr>")
-vim.keymap.set("n", "<leader>nb", "<cmd>Neotree buffers<cr>")
-vim.keymap.set("n", "<leader>ng", "<cmd>Neotree git_status<cr>")
+vim.keymap.set("n", "<leader>ef", "<cmd>Neotree<cr>")
+vim.keymap.set("n", "<leader>eb", "<cmd>Neotree buffers<cr>")
+vim.keymap.set("n", "<leader>eg", "<cmd>Neotree git_status<cr>")
