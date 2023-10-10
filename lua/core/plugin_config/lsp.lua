@@ -34,6 +34,17 @@ require('lspconfig').lua_ls.setup {
   },
 }
 
+-- add 'vim' to lua globals
+require('lspconfig').lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+}
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {},
