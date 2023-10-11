@@ -11,8 +11,8 @@ require("neo-tree").setup({
     }
   },
   source_selector = {
-    winbar = true,
-    statusline = false
+    winbar = false,
+    statusline = true
   },
   git_status = {
     symbols = {
@@ -29,6 +29,9 @@ require("neo-tree").setup({
       conflict  = "",
     }
   },
+  window = {
+    position = "current"
+  }
 })
 
 vim.keymap.set("n", "<leader>ef", "<cmd>Neotree<cr>")
