@@ -154,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/cam/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  ["nvim-window-picker"] = {
+    loaded = true,
+    path = "/home/cam/.local/share/nvim/site/pack/packer/start/nvim-window-picker",
+    url = "https://github.com/s1n7ax/nvim-window-picker"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/cam/.local/share/nvim/site/pack/packer/start/packer.nvim",
