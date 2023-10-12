@@ -1,7 +1,7 @@
 require('core.keymaps')
 require('core.plugins')
 require('core.plugin_config')
-vim.wo.relativenumber = true
+vim.wo.number = true
 vim.opt.colorcolumn = "80"
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
