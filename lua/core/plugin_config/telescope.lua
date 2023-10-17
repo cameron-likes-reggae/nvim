@@ -1,5 +1,14 @@
 local builtin = require('telescope.builtin')
 
+require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      ".git"
+    }
+  }
+}
+
 vim.keymap.set('n', '<leader>/', function()
   require("telescope.builtin").current_buffer_fuzzy_find({
     previewer = false
