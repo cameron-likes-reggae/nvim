@@ -83,6 +83,9 @@ return require('packer').startup(function(use)
   -- Vim git
   use "tpope/vim-fugitive"
 
+  -- Git tree
+  use "rbong/vim-flog"
+
   -- Window picker for Neo-Tree
  -- use "s1n7ax/nvim-window-picker"
   -- Automatically set up your configuration after cloning packer.nvim
