@@ -28,6 +28,9 @@ return require('packer').startup(function(use)
     priority = 1000
   }
 
+  -- Catppuccin Colour Scheme
+  use { "catppuccin/nvim", as = "catppuccin" }
+
   -- File parsing
   use 'nvim-treesitter/nvim-treesitter'
 
@@ -87,7 +90,7 @@ return require('packer').startup(function(use)
   use "rbong/vim-flog"
 
   -- Window picker for Neo-Tree
- -- use "s1n7ax/nvim-window-picker"
+  -- use "s1n7ax/nvim-window-picker"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
