@@ -8,3 +8,5 @@ require("core.plugin_config.harpoon")
 require("core.plugin_config.neo-tree")
 --require("core.plugin_config.window-picker")
 require("core.plugin_config.nerdcommenter")
+require("core.plugin_config.catppuccin")
+vim.cmd [[colorscheme catppuccin]]
