@@ -8,3 +8,4 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.list = true
 vim.opt.listchars = 'tab:| ,lead:·,trail:·'
+vim.diagnostic.config({ virtual_lines = { only_current_line = true } })

@@ -9,4 +9,7 @@ require("core.plugin_config.neo-tree")
 --require("core.plugin_config.window-picker")
 require("core.plugin_config.nerdcommenter")
 require("core.plugin_config.catppuccin")
+require("core.plugin_config.aerial")
+require("core.plugin_config.diagflow")
+require("core.plugin_config.trouble")
 vim.cmd [[colorscheme catppuccin]]

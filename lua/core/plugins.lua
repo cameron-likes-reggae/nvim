@@ -88,6 +88,15 @@ return require('packer').startup(function(use)
   -- Git tree
   use "rbong/vim-flog"
 
+  -- Aerial
+  use "stevearc/aerial.nvim"
+
+  -- Better Diagnostics
+  use { 'dgagn/diagflow.nvim' }
+
+  -- Trouble
+  use { "folke/trouble.nvim" }
+
   -- Window picker for Neo-Tree
   -- use "s1n7ax/nvim-window-picker"
   -- Automatically set up your configuration after cloning packer.nvim
