@@ -97,8 +97,9 @@ return require('packer').startup(function(use)
   -- Trouble
   use { "folke/trouble.nvim" }
 
-  -- Window picker for Neo-Tree
-  -- use "s1n7ax/nvim-window-picker"
+  -- Surround Words/Text with quotes, brackets etc.
+  use "tpope/vim-surround"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
