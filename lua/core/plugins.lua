@@ -92,14 +92,19 @@ return require('packer').startup(function(use)
   use "stevearc/aerial.nvim"
 
   -- Better Diagnostics
-  use { 'dgagn/diagflow.nvim' }
+  use "dgagn/diagflow.nvim"
 
   -- Trouble
-  use { "folke/trouble.nvim" }
+  use "folke/trouble.nvim"
 
   -- Surround Words/Text with quotes, brackets etc.
   use "tpope/vim-surround"
 
+  -- CSS colour highlighter
+  use "ap/vim-css-color"
+
+  -- Minesweeper >:)
+  use "seandewar/nvimesweeper"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
