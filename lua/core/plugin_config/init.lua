@@ -15,4 +15,4 @@ require("core.plugin_config.trouble")
 require("core.plugin_config.tokyo")
 require("core.plugin_config.barbecue")
 
-vim.cmd [[colorscheme tokyonight-night]]
+vim.cmd [[colorscheme tokyonight]]
