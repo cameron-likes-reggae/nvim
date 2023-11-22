@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
   -- Catppuccin Colour Scheme
   use { "catppuccin/nvim", as = "catppuccin" }
 
+  -- Tokyo Night Colour Scheme
+  use { "folke/tokyonight.nvim" }
+
   -- File parsing
   use 'nvim-treesitter/nvim-treesitter'
 
@@ -99,6 +102,13 @@ return require('packer').startup(function(use)
 
   -- Surround Words/Text with quotes, brackets etc.
   use "tpope/vim-surround"
+
+  use({
+    "utilyre/barbecue.nvim",
+    requires = {
+      "SmiteshP/nvim-navic",
+    },
+  })
 
   -- CSS colour highlighter
   use "ap/vim-css-color"

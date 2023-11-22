@@ -12,4 +12,7 @@ require("core.plugin_config.catppuccin")
 require("core.plugin_config.aerial")
 require("core.plugin_config.diagflow")
 require("core.plugin_config.trouble")
-vim.cmd [[colorscheme catppuccin]]
+require("core.plugin_config.tokyo")
+require("core.plugin_config.barbecue")
+
+vim.cmd [[colorscheme tokyonight-night]]
