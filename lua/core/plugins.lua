@@ -110,6 +110,8 @@ return require('packer').startup(function(use)
       "SmiteshP/nvim-navic",
     },
   })
+  use 'nvim-pack/nvim-spectre'
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- CSS colour highlighter
   use "ap/vim-css-color"
