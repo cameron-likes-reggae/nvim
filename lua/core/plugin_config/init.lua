@@ -14,5 +14,6 @@ require("core.plugin_config.diagflow")
 require("core.plugin_config.trouble")
 require("core.plugin_config.tokyo")
 require("core.plugin_config.barbecue")
+require("core.plugin_config.mini")
 
 vim.cmd [[colorscheme tokyonight]]

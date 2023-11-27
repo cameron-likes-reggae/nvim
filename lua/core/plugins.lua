@@ -60,6 +60,7 @@ return require('packer').startup(function(use)
     }
   }
 
+  use 'echasnovski/mini.nvim'
   -- Show hunks in files
   use "lewis6991/gitsigns.nvim"
 
@@ -112,6 +113,8 @@ return require('packer').startup(function(use)
 
   -- CSS colour highlighter
   use "ap/vim-css-color"
+
+  use "echasnovski/mini.indentscope"
 
   -- Minesweeper >:)
   use "seandewar/nvimesweeper"
