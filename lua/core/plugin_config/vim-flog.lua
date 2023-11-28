@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>hf", "<cmd>Flog<CR>")
+vim.keymap.set("n", "<leader>hh", "<cmd>Flog<CR>")

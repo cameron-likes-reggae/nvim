@@ -18,5 +18,6 @@ require("core.plugin_config.mini")
 require("core.plugin_config.indent")
 require("core.plugin_config.spectre")
 require("core.plugin_config.navbuddy")
+require("core.plugin_config.icon-picker")
 
 vim.cmd [[colorscheme tokyonight]]
