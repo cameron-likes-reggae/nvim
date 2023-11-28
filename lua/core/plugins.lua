@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
       { 'L3MON4D3/LuaSnip' },
     }
   }
+  use { 'neovim/nvim-lspconfig' }
 
   use 'echasnovski/mini.nvim'
   -- Show hunks in files
@@ -85,7 +86,16 @@ return require('packer').startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
-
+  use {
+    "themaxmarchuk/tailwindcss-colors.nvim",
+    -- load only on require("tailwindcss-colors")
+    module = "tailwindcss-colors",
+    -- run the setup function after plugin is loaded
+    config = function()
+      -- pass config options here (or nothing to use defaults)
+      require("tailwindcss-colors").setup()
+    end
+  }
   -- Vim git
   use "tpope/vim-fugitive"
 
