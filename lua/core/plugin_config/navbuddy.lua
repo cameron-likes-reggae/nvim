@@ -3,19 +3,19 @@ local actions = require("nvim-navbuddy.actions")
 
 navbuddy.setup {
   window = {
-    border = "single", -- "rounded", "double", "solid", "none"
+    border = "rounded", -- "rounded", "double", "solid", "none"
     -- or an array with eight chars building up the border in a clockwise fashion
     -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
-    size = "60%",     -- Or table format example: { height = "40%", width = "100%"}
+    size = "75%",     -- Or table format example: { height = "40%", width = "100%"}
     position = "50%", -- Or table format example: { row = "100%", col = "0%"}
     scrolloff = nil,  -- scrolloff value within navbuddy window
     sections = {
       left = {
-        size = "20%",
+        size = "30%",
         border = nil, -- You can set border style for each section individually as well.
       },
       mid = {
-        size = "40%",
+        size = "30%",
         border = nil,
       },
       right = {
@@ -31,8 +31,8 @@ navbuddy.setup {
     enabled = true,
     icons = {
       leaf = "  ",
-      leaf_selected = " → ",
-      branch = " ",
+      leaf_selected = "  ",
+      branch = "  ",
     },
   },
   icons = {
@@ -134,4 +134,4 @@ navbuddy.setup {
   }
 }
 
-vim.keymap.set("n", "<C-e>", "<cmd>Navbuddy<cr>")
+vim.keymap.set("n", "<C-e>", "<cmd>:lua require('nvim-navbuddy').open()<cr>")
