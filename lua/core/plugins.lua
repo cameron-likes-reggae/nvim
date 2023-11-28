@@ -128,6 +128,18 @@ return require('packer').startup(function(use)
 
   use "echasnovski/mini.indentscope"
 
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+      "numToStr/Comment.nvim",          -- Optional
+      "nvim-telescope/telescope.nvim"   -- Optional
+    }
+  }
+
+
   -- Minesweeper >:)
   use "seandewar/nvimesweeper"
   -- Automatically set up your configuration after cloning packer.nvim

@@ -17,5 +17,6 @@ require("core.plugin_config.barbecue")
 require("core.plugin_config.mini")
 require("core.plugin_config.indent")
 require("core.plugin_config.spectre")
+require("core.plugin_config.navbuddy")
 
 vim.cmd [[colorscheme tokyonight]]
