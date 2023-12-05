@@ -39,8 +39,15 @@ return require('packer').startup(function(use)
 
   -- Fuzzy file finding
   use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    --tag = '0.1.3',
+    run = 'make',
+    --requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+
+  use {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.3',
+    tag = '0.1.4',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 

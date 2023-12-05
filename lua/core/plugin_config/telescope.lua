@@ -8,6 +8,7 @@ require('telescope').setup {
     }
   }
 }
+--require('telescope').load_extension('fzf')
 
 vim.keymap.set('n', '<leader>/', function()
   require("telescope.builtin").current_buffer_fuzzy_find({
