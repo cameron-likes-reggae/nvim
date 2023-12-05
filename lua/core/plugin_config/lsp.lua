@@ -9,15 +9,31 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 -- add 'vim' to lua globals
-require('lspconfig').lua_ls.setup {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
+--require('lspconfig').lua_ls.setup {
+--settings = {
+--Lua = {
+--diagnostics = {
+--globals = { 'vim' }
+--}
+--}
+--}
+--}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').emmet_ls.setup({
+  --on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
   }
-}
+})
 
 --local nvim_lsp = require("lspconfig")
 
@@ -34,7 +50,7 @@ require('lspconfig').lua_ls.setup {
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {},
+  ensure_installed = { "cssls", "emmet_ls", "jsonls", "lua_ls", "tsserver", "jedi_language_server" },
   handlers = {
     lsp_zero.default_setup,
   },

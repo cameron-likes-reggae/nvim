@@ -9,6 +9,8 @@ local ensure_packer = function()
   return false
 end
 
+
+
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
@@ -64,8 +66,20 @@ return require('packer').startup(function(use)
       { 'hrsh7th/nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' }
     }
   }
+
+  use({
+    "L3MON4D3/LuaSnip",
+    --tag = "v2.*",
+    --run = "make install_jsregexp"
+  })
+
+  use "honza/vim-snippets"
+
+  use "rafamadriz/friendly-snippets"
+
   use { 'neovim/nvim-lspconfig' }
 
   use 'echasnovski/mini.nvim'
