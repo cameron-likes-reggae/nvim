@@ -31,7 +31,7 @@ navbuddy.setup {
     enabled = true,
     icons = {
       leaf = "  ",
-      leaf_selected = "  ",
+      leaf_selected = " ",
       branch = "  ",
     },
   },
@@ -48,7 +48,7 @@ navbuddy.setup {
     Enum          = "󰕘 ",
     Interface     = "󰕘 ",
     Function      = "󰊕 ",
-    Variable      = "𝒙 ",
+    Variable      = "󰫧 ",
     Constant      = "󰏿 ",
     String        = " ",
     Number        = "󰎠 ",
