@@ -1,113 +1,96 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 
+vim.opt.rtp:prepend(lazypath)
 
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
+require("lazy").setup({
   -- File icons for file explorer
-  use 'nvim-tree/nvim-web-devicons'
+  'nvim-tree/nvim-web-devicons',
 
   -- Beautiful status bar
-  use 'nvim-lualine/lualine.nvim'
+  'nvim-lualine/lualine.nvim',
 
   -- Nightfly colorsheme
-  use {
+  {
     "bluz71/vim-nightfly-colors",
     name = "nightfly",
     lazy = false,
     priority = 1000
-  }
+  },
 
   -- Catppuccin Colour Scheme
-  use { "catppuccin/nvim", as = "catppuccin" }
+  { "catppuccin/nvim",      as = "catppuccin" },
 
   -- Tokyo Night Colour Scheme
-  use { "folke/tokyonight.nvim" }
+  { "folke/tokyonight.nvim" },
 
   -- File parsing
-  use 'nvim-treesitter/nvim-treesitter'
+  'nvim-treesitter/nvim-treesitter',
 
   -- Fuzzy file finding
-  use {
+  {
     'nvim-telescope/telescope-fzf-native.nvim',
-    --tag = '0.1.3',
     run = 'make',
-    --requires = { { 'nvim-lua/plenary.nvim' } }
-  }
+  },
 
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
+    tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 
   -- LSP Zero for Language servers
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    requires = {
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'L3MON4D3/LuaSnip' },
-      { 'saadparwaiz1/cmp_luasnip' }
-    }
-  }
+  'VonHeikemen/lsp-zero.nvim',
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
+  -- LSP Support
+  { 'neovim/nvim-lspconfig' },
+  -- Autocompletion
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'L3MON4D3/LuaSnip' },
+  { 'saadparwaiz1/cmp_luasnip' },
 
-  use({
-    "L3MON4D3/LuaSnip",
-    --tag = "v2.*",
-    --run = "make install_jsregexp"
-  })
+  "L3MON4D3/LuaSnip",
 
-  use "honza/vim-snippets"
+  "honza/vim-snippets",
 
-  use "rafamadriz/friendly-snippets"
+  "rafamadriz/friendly-snippets",
 
-  use { 'neovim/nvim-lspconfig' }
+  { 'neovim/nvim-lspconfig' },
 
-  use 'echasnovski/mini.nvim'
+  'echasnovski/mini.nvim',
+
   -- Show hunks in files
-  use "lewis6991/gitsigns.nvim"
+  "lewis6991/gitsigns.nvim",
 
   -- Practicing Vim motions
-  use "ThePrimeagen/vim-be-good"
+  "ThePrimeagen/vim-be-good",
 
   -- nerdcommenter for quick commenting of lines
-  use "preservim/nerdcommenter"
+  --"preservim/nerdcommenter",
 
   -- Harpoon for quick file navigation
-  use "ThePrimeagen/harpoon"
+  "ThePrimeagen/harpoon",
 
   -- Dracula Colorscheme
-  use "Mofiqul/dracula.nvim"
+  "Mofiqul/dracula.nvim",
 
   -- File Explorer Plugin
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    }
-  }
-  use {
+  "nvim-neo-tree/neo-tree.nvim",
+  "nvim-lua/plenary.nvim",
+  "MunifTanjim/nui.nvim",
+
+  {
     "themaxmarchuk/tailwindcss-colors.nvim",
     -- load only on require("tailwindcss-colors")
     module = "tailwindcss-colors",
@@ -116,38 +99,36 @@ return require('packer').startup(function(use)
       -- pass config options here (or nothing to use defaults)
       require("tailwindcss-colors").setup()
     end
-  }
+  },
   -- Vim git
-  use "tpope/vim-fugitive"
+  "tpope/vim-fugitive",
 
   -- Git tree
-  use "rbong/vim-flog"
+  "rbong/vim-flog",
 
   -- Aerial
-  use "stevearc/aerial.nvim"
+  "stevearc/aerial.nvim",
 
   -- Better Diagnostics
-  use "dgagn/diagflow.nvim"
+  "dgagn/diagflow.nvim",
 
   -- Trouble
-  use "folke/trouble.nvim"
+  "folke/trouble.nvim",
 
   -- Surround Words/Text with quotes, brackets etc.
-  use "tpope/vim-surround"
+  "tpope/vim-surround",
 
-  use({
-    "utilyre/barbecue.nvim",
-    requires = {
-      "SmiteshP/nvim-navic",
-    },
-  })
-  use 'nvim-pack/nvim-spectre'
-  use "lukas-reineke/indent-blankline.nvim"
+  "utilyre/barbecue.nvim",
+  "SmiteshP/nvim-navic",
+
+  "nvim-pack/nvim-spectre",
+
+  { "lukas-reineke/indent-blankline.nvim", main = 'ibl', opts = {} },
 
   -- CSS colour highlighter
-  use "ap/vim-css-color"
+  "ap/vim-css-color",
 
-  use({
+  {
     "roobert/tailwindcss-colorizer-cmp.nvim",
     -- optionally, override the default options:
     config = function()
@@ -155,31 +136,23 @@ return require('packer').startup(function(use)
         color_square_width = 2,
       })
     end
-  })
+  },
 
 
-  use "echasnovski/mini.indentscope"
+  "echasnovski/mini.indentscope",
 
-  use {
-    "SmiteshP/nvim-navbuddy",
-    requires = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim",
-      "numToStr/Comment.nvim",        -- Optional
-      "nvim-telescope/telescope.nvim" -- Optional
-    }
-  }
+  "SmiteshP/nvim-navbuddy",
+  "neovim/nvim-lspconfig",
+  "SmiteshP/nvim-navic",
+  "MunifTanjim/nui.nvim",
+  "numToStr/Comment.nvim", -- Optional
 
-  use "stevearc/dressing.nvim"
+  "stevearc/dressing.nvim",
 
   --use "ziontee113/icon-picker.nvim"
 
   -- Minesweeper >:)
-  use "seandewar/nvimesweeper"
+  "seandewar/nvimesweeper",
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+}, {})
