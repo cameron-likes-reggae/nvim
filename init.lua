@@ -9,3 +9,6 @@ vim.opt.scrolloff = 8
 vim.opt.relativenumber = true
 vim.opt.listchars = 'tab:| ,lead:·,trail:·'
 vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+vim.opt.title = true
+vim.opt.titlelen = 0
+vim.opt.titlestring = 'Nvim (%{expand("%:p")})'

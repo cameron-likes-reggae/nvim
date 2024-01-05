@@ -28,13 +28,13 @@ require("lazy").setup({
   },
 
   -- Catppuccin Colour Scheme
-  { "catppuccin/nvim",      as = "catppuccin" },
+  { "catppuccin/nvim",                 as = "catppuccin" },
 
   -- Tokyo Night Colour Scheme
   { "folke/tokyonight.nvim" },
 
   -- File parsing
-  'nvim-treesitter/nvim-treesitter',
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
   -- Fuzzy file finding
   {
@@ -60,13 +60,9 @@ require("lazy").setup({
   { 'L3MON4D3/LuaSnip' },
   { 'saadparwaiz1/cmp_luasnip' },
 
-  "L3MON4D3/LuaSnip",
-
   "honza/vim-snippets",
 
   "rafamadriz/friendly-snippets",
-
-  { 'neovim/nvim-lspconfig' },
 
   'echasnovski/mini.nvim',
 
@@ -75,9 +71,6 @@ require("lazy").setup({
 
   -- Practicing Vim motions
   "ThePrimeagen/vim-be-good",
-
-  -- nerdcommenter for quick commenting of lines
-  --"preservim/nerdcommenter",
 
   -- Harpoon for quick file navigation
   "ThePrimeagen/harpoon",
@@ -88,7 +81,6 @@ require("lazy").setup({
   -- File Explorer Plugin
   "nvim-neo-tree/neo-tree.nvim",
   "nvim-lua/plenary.nvim",
-  "MunifTanjim/nui.nvim",
 
   {
     "themaxmarchuk/tailwindcss-colors.nvim",
@@ -119,7 +111,6 @@ require("lazy").setup({
   "tpope/vim-surround",
 
   "utilyre/barbecue.nvim",
-  "SmiteshP/nvim-navic",
 
   "nvim-pack/nvim-spectre",
 
@@ -142,10 +133,12 @@ require("lazy").setup({
   "echasnovski/mini.indentscope",
 
   "SmiteshP/nvim-navbuddy",
-  "neovim/nvim-lspconfig",
+
   "SmiteshP/nvim-navic",
+
   "MunifTanjim/nui.nvim",
-  "numToStr/Comment.nvim", -- Optional
+
+  "numToStr/Comment.nvim",
 
   "stevearc/dressing.nvim",
 

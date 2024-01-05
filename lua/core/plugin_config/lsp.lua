@@ -1,56 +1,36 @@
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({ buffer = bufnr })
+  local opts = { buffer = bufnr }
+
   lsp_zero.async_autoformat(client, bufnr)
+
+  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+  vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+  vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+  vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+  vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+
+  vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+  vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+  vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 end)
 
---add 'vim' to lua globals
---require('lspconfig')["lua_ls"].setup({
---settings = {
---Lua = {
---diagnostics = {
---globals = { 'vim' }
---}
---}
---}
---})
-
---local capabilities = vim.lsp.protocol.make_client_capabilities()
---capabilities.textDocument.completion.completionItem.snippetSupport = true
---require('lspconfig').emmet_ls.setup({
-----on_attach = on_attach,
---capabilities = capabilities,
---filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
---init_options = {
---html = {
---options = {
----- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
---["bem.enabled"] = true,
---},
---},
---}
---})
-
---local nvim_lsp = require("lspconfig")
-
---local on_attach = function(client, bufnr)
----- other stuff --
---require("tailwindcss-colors").buf_attach(bufnr)
---end
-
---nvim_lsp["tailwindcss"].setup({
----- other settings --
---on_attach = on_attach,
---})
-
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = { "cssls", "jsonls", "lua_ls", "tsserver", "jedi_language_server" },
   handlers = {
-    lsp_zero.default_setup,
+    function(ls)
+      require("lspconfig")[ls].setup {
+        capabilities = capabilities
+      }
+    end,
   },
 })
