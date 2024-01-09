@@ -12,3 +12,4 @@ vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
 vim.opt.title = true
 vim.opt.titlelen = 0
 vim.opt.titlestring = 'Nvim (%{expand("%:p")})'
+vim.o.pumheight = 8
