@@ -7,11 +7,11 @@ local cmp_action = require('lsp-zero').cmp_action()
 require('luasnip.loaders.from_snipmate').lazy_load()
 
 cmp.setup({
-  -- snippet = {
-  --   expand = function(args)
-  --     require('luasnip').lsp_expand(args.body)
-  --   end,
-  -- },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   preselect = 'item',
   completion = {
     completeopt = 'menu,menuone,noinsert'
