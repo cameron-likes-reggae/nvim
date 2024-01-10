@@ -17,8 +17,9 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert'
   },
   sources = {
-    { name = 'nvim_lsp', max_item_count = 30 },
-    { name = 'luasnip',  max_item_count = 30 },
+    { name = 'nvim_lsp',             max_item_count = 30 },
+    { name = 'luasnip',              max_item_count = 30 },
+    { name = 'vim-dadbod-completion' }
   },
   formatting = {
     format = require("tailwindcss-colorizer-cmp").formatter,
