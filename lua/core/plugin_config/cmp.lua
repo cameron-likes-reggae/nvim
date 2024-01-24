@@ -2,24 +2,19 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 -- Vscode snippets
---require('luasnip.loaders.from_vscode').lazy_load()
+-- require('luasnip.loaders.from_vscode').lazy_load()
 
-require('luasnip.loaders.from_snipmate').lazy_load()
+-- require('luasnip.loaders.from_snipmate').lazy_load()
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
   preselect = 'item',
   completion = {
     completeopt = 'menu,menuone,noinsert'
   },
   sources = {
-    { name = 'nvim_lsp',             max_item_count = 30 },
-    { name = 'luasnip',              max_item_count = 30 },
-    { name = 'vim-dadbod-completion' }
+    { name = 'nvim_lsp',              max_item_count = 10 },
+    { name = 'luasnip',               max_item_count = 10 },
+    { name = 'vim-dadbod-completion', max_item_count = 10 }
   },
   formatting = {
     format = require("tailwindcss-colorizer-cmp").formatter,
