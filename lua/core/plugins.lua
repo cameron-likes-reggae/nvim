@@ -131,6 +131,12 @@ require("lazy").setup({
     end
   },
 
+  {
+    "startup-nvim/startup.nvim",
+    config = function()
+      require("startup").setup()
+    end
+  },
 
   "echasnovski/mini.indentscope",
 
