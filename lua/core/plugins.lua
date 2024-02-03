@@ -64,6 +64,8 @@ require("lazy").setup({
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-cmdline' },
 
+  { 'github/copilot.vim' },
+
   'echasnovski/mini.nvim',
 
   -- Show hunks in files

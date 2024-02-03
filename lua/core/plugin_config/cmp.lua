@@ -13,9 +13,9 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered()
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered()
   },
-
   preselect = 'item',
   completion = {
     completeopt = 'menu,menuone,noinsert'
@@ -33,9 +33,6 @@ cmp.setup({
     format = require("tailwindcss-colorizer-cmp").formatter,
   },
   mapping = cmp.mapping.preset.insert({
-    -- `Tab` key to confirm completion
-    ['<Tab>'] = cmp.mapping.confirm({ select = false }),
-
     -- Ctrl+Space to trigger completion menu
     ['<C-l>'] = cmp.mapping.complete(),
 
