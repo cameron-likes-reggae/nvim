@@ -19,19 +19,17 @@ require("lazy").setup({
   -- Beautiful status bar
   'nvim-lualine/lualine.nvim',
 
-  -- Nightfly colorsheme
+
+  -- Colorschemes
   {
     "bluz71/vim-nightfly-colors",
     name = "nightfly",
     lazy = false,
     priority = 1000
   },
-
-  -- Catppuccin Colour Scheme
   { "catppuccin/nvim",                 as = "catppuccin" },
-
-  -- Tokyo Night Colour Scheme
   { "folke/tokyonight.nvim" },
+  { "ellisonleao/gruvbox.nvim",        priority = 1000,    config = true },
 
   -- File parsing
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -168,7 +166,6 @@ require("lazy").setup({
     end,
   },
   'vim-scripts/dbext.vim',
-  --use "ziontee113/icon-picker.nvim"
 
   -- Minesweeper >:)
   "seandewar/nvimesweeper",
