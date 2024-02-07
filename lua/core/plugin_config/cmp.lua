@@ -21,8 +21,8 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert'
   },
   sources = {
-    { name = 'nvim_lsp', keyword_length = 5, max_item_count = 10, priority = 10, group_index = 1 },
-    { name = 'luasnip',  keyword_length = 5, max_item_count = 10, priority = 10, group_index = 1 },
+    { name = 'nvim_lsp', keyword_length = 4, max_item_count = 10, priority = 10, group_index = 1 },
+    { name = 'luasnip',  keyword_length = 4, max_item_count = 10, priority = 10, group_index = 1 },
   },
   performance = {
     trigger_debouce_time = 500,
