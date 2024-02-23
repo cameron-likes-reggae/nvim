@@ -25,7 +25,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { "cssls", "jsonls", "lua_ls", "jedi_language_server" },
+  ensure_installed = { "cssls", "jsonls", "lua_ls" },
   handlers = {
     function(ls)
       require("lspconfig")[ls].setup {
