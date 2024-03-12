@@ -1,3 +1,13 @@
+local signs = {
+  -- icons / text used for a diagnostic
+  error = "",
+  warning = "",
+  hint = "",
+  information = "",
+  other = "",
+}
+
+
 require("trouble").setup({
   position = "bottom", -- position of the list can be: bottom, top, left, right
   height = 10, -- height of the trouble list when position is top or bottom
@@ -43,15 +53,8 @@ require("trouble").setup({
   auto_fold = false,                                                                    -- automatically fold a file trouble list at creation
   auto_jump = { "lsp_definitions" },                                                    -- for the given modes, automatically jump if there is only a single result
   include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions" }, -- for the given modes, include the declaration of the current symbol in the results
-  signs = {
-    -- icons / text used for a diagnostic
-    error = "",
-    warning = "",
-    hint = "",
-    information = "",
-    other = "",
-  },
-  use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+  signs = signs,                                                                        -- icons / text used for a diagnostic
+  use_diagnostic_signs = false                                                          -- enabling this will use the signs defined in your lsp client
 })
 
 vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
@@ -60,3 +63,20 @@ vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document
 vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
 vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+
+
+
+signs = {
+  -- icons / text used for a diagnostic
+  Error = "",
+  Warning = "",
+  Hint = "",
+  Information = "",
+  Other = "",
+}
+
+-- Setting icons for gutter diagnostic signs
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end

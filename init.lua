@@ -14,7 +14,6 @@ vim.opt.titlelen = 0
 vim.opt.titlestring = 'Nvim (%{expand("%:p")})'
 vim.o.pumheight = 8
 vim.opt.swapfile = false
-vim.diagnostic.config({ update_in_insert = true })
-
+vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
 
 vim.cmd [[colorscheme gruvbox]]
