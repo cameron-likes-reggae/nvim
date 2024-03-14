@@ -1,37 +1,24 @@
-local highlight = {
-  "RainbowRed",
-  "RainbowYellow",
-  "RainbowBlue",
-  "RainbowOrange",
-  "RainbowGreen",
-  "RainbowViolet",
-  "RainbowCyan",
-}
-
-local identifier = vim.api.nvim_get_hl_by_name("Identifier", true)
-
-local hooks = require "ibl.hooks"
--- create the highlight groups in the highlight setup hook, so they are reset
--- every time the colorscheme changes
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-  vim.api.nvim_set_hl(0, "RainbowRed", { fg = identifier.fg or "pink" })
-  vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#d79921" })
-  vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#458588" })
-  vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#d65d0e" })
-  vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98971a" })
-  vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#b16286" })
-  vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#689d6a" })
-end)
-
-vim.g.rainbow_delimiters = { highlight = highlight }
+vim.api.nvim_set_hl(0, "IblIndent", { fg = "cyan" })
+vim.api.nvim_set_hl(0, "IblWhitespace", { fg = "red" })
+vim.api.nvim_set_hl(0, "IblScope", { fg = "blue" })
 
 require("ibl").setup({
+  enabled = true,
   indent = {
-    -- char = "▏",
-    -- tab_char = "▏",
-    highlight = highlight
+    char = "▎",
+    highlight = { "Whitespace" },
   },
-  scope = { highlight = highlight, enabled = true },
+  whitespace = {
+    highlight = { "Operator" },
+  },
+  scope = {
+    highlight = { "Operator" },
+    char = "▍",
+    enabled = true,
+    show_start = false,
+    show_end = false,
+
+  },
   exclude = {
     filetypes = {
       "help",
@@ -48,5 +35,3 @@ require("ibl").setup({
     },
   },
 })
-
-hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)

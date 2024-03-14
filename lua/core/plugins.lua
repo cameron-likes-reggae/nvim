@@ -19,6 +19,8 @@ require("lazy").setup({
   -- Beautiful status bar
   'nvim-lualine/lualine.nvim',
 
+  "rcarriga/nvim-notify",
+
 
   -- Colorschemes
   {
