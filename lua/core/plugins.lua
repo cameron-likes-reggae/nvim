@@ -21,6 +21,7 @@ require("lazy").setup({
 
   "rcarriga/nvim-notify",
 
+  "zaldih/themery.nvim",
 
   -- Colorschemes
   {

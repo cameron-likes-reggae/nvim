@@ -16,4 +16,5 @@ vim.o.pumheight = 8
 vim.opt.swapfile = false
 vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
 
-vim.cmd [[colorscheme gruvbox]]
+-- Set the stored theme
+require("settings.theme")
