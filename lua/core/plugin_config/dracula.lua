@@ -1,3 +1,3 @@
 require("dracula").setup({
-  transparent_bg = true
+  transparent_bg = false
 })
