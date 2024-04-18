@@ -14,7 +14,19 @@ vim.opt.titlelen = 0
 vim.opt.titlestring = 'Nvim (%{expand("%:p")})'
 vim.o.pumheight = 8
 vim.opt.swapfile = false
-vim.diagnostic.config({ virtual_text = true, update_in_insert = true })
+vim.diagnostic.config({
+  virtual_text = {
+    source = "if_many",
+    prefix = "",
+  },
+  update_in_insert = true
+})
+
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 -- Set the stored theme
 require("settings.theme")
