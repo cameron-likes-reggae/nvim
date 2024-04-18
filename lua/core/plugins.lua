@@ -35,6 +35,7 @@ require("lazy").setup({
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	{ "rose-pine/neovim", as = "rose-pine" },
 	{ "sekke276/dark_flat.nvim" },
+	{ "rebelot/kanagawa.nvim" },
 
 	-- File parsing
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
