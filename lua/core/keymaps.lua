@@ -24,6 +24,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("n", "<leader>p", '"+p', { noremap = true })
 
+vim.keymap.set("n", "<leader><leader>", "<C-^>", { noremap = true })
+
 -- Clears highlighting after search
 vim.keymap.set("n", "<CR>", ":noh<CR>", { silent = true, noremap = true })
 

@@ -198,8 +198,6 @@ require("lazy").setup({
 	-- Surround Words/Text with quotes, brackets etc.
 	"tpope/vim-surround",
 
-	"utilyre/barbecue.nvim",
-
 	"nvim-pack/nvim-spectre",
 
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
