@@ -6,9 +6,9 @@ require('telescope').setup {
       "node_modules",
       ".git"
     }
-  }
+  },
 }
---require('telescope').load_extension('fzf')
+-- require('telescope').load_extension('fzf')
 
 vim.keymap.set('n', '<leader>/', function()
   require("telescope.builtin").current_buffer_fuzzy_find({

@@ -23,6 +23,8 @@ require("lazy").setup({
 
 	"zaldih/themery.nvim",
 
+	{ "folke/neodev.nvim", opts = {} },
+
 	-- Colorschemes
 	{
 		"bluz71/vim-nightfly-colors",
@@ -224,8 +226,8 @@ require("lazy").setup({
 	"SmiteshP/nvim-navic",
 
 	"MunifTanjim/nui.nvim",
-
 	"numToStr/Comment.nvim",
+	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	"stevearc/dressing.nvim",
 
