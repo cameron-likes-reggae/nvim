@@ -1,14 +1,6 @@
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 
-require("cmp_nvim_ultisnips").setup({
-	filetype_source = "ultisnips_default",
-	show_snippets = "all",
-	documentation = function(snippet)
-		return snippet.description .. "\n\n" .. snippet.value
-	end,
-})
-
 local lspkind = require("lspkind")
 
 cmp.setup({
@@ -46,15 +38,13 @@ cmp.setup({
 	completion = {
 		completeopt = "menu,menuone,noinsert",
 	},
-	sources = {
-		-- { name = "nvim_lsp", keyword_length = 2, max_item_count = 10, priority = 5, group_index = 1 },
-		-- { name = "ultisnips", keyword_length = 2, max_item_count = 10, priority = 10, group_index = 1 },
-		{ name = "luasnip" },
-		{ name = "nvim_lsp", max_item_count = 20 },
-		{ name = "calc" },
-		{ name = "path" },
-		-- { name = "buffer" },
-	},
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp", max_item_count = 20, group_index = 2 },
+		{ name = "calc", group_index = 2 },
+		{ name = "path", group_index = 2 },
+	}, {
+		{ name = "buffer" },
+	}),
 	-- performance = {
 	-- 	trigger_debouce_time = 500,
 	-- 	throttle = 550,
@@ -80,6 +70,7 @@ cmp.setup({
 			return kind
 		end,
 	},
+
 	mapping = cmp.mapping.preset.insert({
 		-- Ctrl+Space to trigger completion menu
 		["<C-l>"] = cmp.mapping.complete(),
@@ -96,4 +87,12 @@ cmp.setup({
 		-- native_menu = true,
 		-- ghost_text = true
 	},
+})
+
+cmp.setup.filetype("gitcommit", {
+	sources = cmp.config.sources({
+		{ name = "git" },
+	}, {
+		{ name = "buffer" },
+	}),
 })

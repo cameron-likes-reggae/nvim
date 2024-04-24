@@ -62,6 +62,12 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 	{ "stevearc/conform.nvim", opts = {} },
 
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			-- options
+		},
+	},
 	-- Typescript tools
 	{
 		"pmizio/typescript-tools.nvim",
@@ -70,7 +76,6 @@ require("lazy").setup({
 
 	-- CMP
 	{ "SirVer/ultisnips" },
-	{ "quangnguyen30192/cmp-nvim-ultisnips" },
 	{ "hrsh7th/nvim-cmp" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "L3MON4D3/LuaSnip" },
@@ -81,9 +86,26 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-calc" },
 	{ "onsails/lspkind.nvim" },
 
-	{ "github/copilot.vim" },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					keymap = {
+						accept = "<Tab>",
+						dismiss = "<M-]>",
+					},
+				},
+				panel = { enabled = false },
+			})
+		end,
+	},
 
-	"echasnovski/mini.nvim",
+	{ "echasnovski/mini.nvim" },
 
 	-- {
 	-- 	"folke/noice.nvim",
