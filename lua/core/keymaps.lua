@@ -21,10 +21,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Yank to system clipboard with leader key
-vim.keymap.set("n", "<leader>y", '"+y')
-vim.keymap.set("n", "<leader>p", '"+P')
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set("v", "<leader>p", '"+P')
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
 
 vim.keymap.set("n", "<leader><leader>", "<C-^>", { noremap = true })
 
