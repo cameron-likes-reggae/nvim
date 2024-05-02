@@ -92,26 +92,6 @@ require("lazy").setup({
   { "hrsh7th/cmp-calc" },
   { "onsails/lspkind.nvim" },
 
-<<<<<<< HEAD
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					keymap = {
-						accept = "<C-Space>",
-						dismiss = "<M-]>",
-					},
-				},
-				panel = { enabled = false },
-			})
-		end,
-	},
-=======
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -130,7 +110,6 @@ require("lazy").setup({
       })
     end,
   },
->>>>>>> 4b0bd57d62e6178a6d73b80e75ab378f65a59da7
 
   { "echasnovski/mini.nvim" },
 
