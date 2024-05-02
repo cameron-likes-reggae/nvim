@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "Syntax highlighting when leaving insert mode",
 	group = vim.api.nvim_create_augroup("enable_buf_hl", { clear = true }),
 	callback = function()
-		print("test")
 		vim.cmd([[TSBufEnable highlight]])
 	end,
 })

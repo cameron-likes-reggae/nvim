@@ -13,6 +13,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
+	{
+		"stevearc/overseer.nvim",
+		opts = {},
+	},
+
 	-- File icons for file explorer
 	"nvim-tree/nvim-web-devicons",
 
@@ -96,7 +102,7 @@ require("lazy").setup({
 					enabled = true,
 					auto_trigger = true,
 					keymap = {
-						accept = "<Tab>",
+						accept = "<C-Space>",
 						dismiss = "<M-]>",
 					},
 				},
