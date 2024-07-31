@@ -1,6 +1,5 @@
 require("themery").setup({
 	themes = { "gruvbox", "catppuccin", "nightfly", "tokyonight", "rose-pine", "dracula", "dark_flat", "kanagawa" }, -- Your list of installed colorschemes
-	themeConfigFile = "~/.config/nvim/lua/settings/theme.lua", -- Described below
 	livePreview = true, -- Apply theme while browsing. Default to true.
 })
 
