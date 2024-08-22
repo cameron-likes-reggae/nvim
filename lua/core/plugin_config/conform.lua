@@ -16,6 +16,7 @@ conform.setup({
 		timeout = 500,
 		lsp_fallback = true,
 		async = false,
+		-- quiet = true,
 	},
 })
 
