@@ -183,4 +183,4 @@ require("oil").setup({
 })
 
 vim.keymap.set("n", "<leader>ef", "<cmd>Oil<cr>")
-vim.keymap.set("n", "<leader>eg", "<cmd>LazyGit<cr>")
+vim.keymap.set("n", "<leader>eg", "<cmd>Neogit<cr>")

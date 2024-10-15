@@ -82,6 +82,7 @@ require("lazy").setup({
   -- LSP Support
   { "neovim/nvim-lspconfig" },
   { "stevearc/conform.nvim",            opts = {} },
+  { "tikhomirov/vim-glsl" },
 
   {
     "j-hui/fidget.nvim",
@@ -251,6 +252,21 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+
+  {
+    "NeogitOrg/neogit",
+    dependiencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+
+      "nvim-telecope/telescope.nvim",
+    },
+    config = function()
+      require("neogit").setup({
+        kind = "floating"
+      })
+    end,
   },
 
   -- Better Diagnostics
