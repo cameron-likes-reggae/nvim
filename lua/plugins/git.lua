@@ -16,6 +16,9 @@ return {
 
       "nvim-telecope/telescope.nvim",
     },
+    keys = {
+      { "<leader>eg", "<cmd>Neogit<CR>" },
+    },
     opts = {
       kind = "floating"
     },
