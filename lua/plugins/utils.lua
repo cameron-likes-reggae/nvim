@@ -23,6 +23,13 @@ return {
     opts = {
       use_default_keymaps = false, max_join_length = 150 },
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  }
+  },
+
+  -- Startup time
+  {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime"
+  },
+
 
 }

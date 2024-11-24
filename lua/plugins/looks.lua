@@ -26,7 +26,17 @@ return {
 
   -- Indentation guides
   "echasnovski/mini.indentscope",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      exclude = {
+        filetypes = {
+          "dashboard"
+        }
+      }
+    }
+  },
 
   -- LSP status
   {
@@ -35,4 +45,39 @@ return {
       -- options
     },
   },
+
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        theme = 'hyper',
+        config = {
+          header = {
+            [[                                                ]],
+            [[                                          _.oo. ]],
+            [[                  _.u[[/;:,.         .odMMMMMM' ]],
+            [[               .o888UU[[[/;:-.  .o@P^    MMM^   ]],
+            [[              oN88888UU[[[/;::-.        dP^     ]],
+            [[             dNMMNN888UU[[[/;:--.   .o@P^       ]],
+            [[            ,MMMMMMN888UU[[/;::-. o@^           ]],
+            [[            NNMMMNN888UU[[[/~.o@P^              ]],
+            [[            888888888UU[[[/o@^-..               ]],
+            [[           oI8888UU[[[/o@P^:--..                ]],
+            [[        .@^  YUU[[[/o@^;::---..                 ]],
+            [[      oMP     ^/o@P^;:::---..                   ]],
+            [[   .dMMM    .o@^ ^;::---...                     ]],
+            [[  dMMMMMMM@^`       `^^^^                       ]],
+            [[ YMMMUP^                                        ]],
+            [[  ^^                                            ]],
+            [[                                                ]],
+          },
+          project = { enable = false },
+          mru = { enable = true, limit = 8 }
+        }
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+  }
+
 }
