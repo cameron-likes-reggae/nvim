@@ -3,6 +3,7 @@ return {
   { 'hrsh7th/cmp-nvim-lsp' },
   {
     'hrsh7th/nvim-cmp',
+    event = { "InsertEnter", "CmdlineEnter" },
     opts = {
       window = {
         completion = {
@@ -14,42 +15,62 @@ return {
   },
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  {
+    'zbirenbaum/copilot-cmp',
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
+
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
     opts = {
       suggestion = {
-        enabled = true,
+        enabled = false,
         auto_trigger = true,
-        keymap = {
-          accept = "<M-y>",
-          dismiss = "<M-]>",
-        },
       },
-      panel = { enabled = false },
+      panel = {
+        enabled = false
+      }
     },
+  },
+  {
+    "onsails/lspkind.nvim",
+    config = function()
+      require("lspkind").init({})
+    end,
   },
 
   {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
-    config = function()
-      require('nvim-treesitter.configs').setup({
-        context_commentstring = {
-          config = {
-            javascript = {
-              __default = '// %s',
-              jsx_element = '{/* %s */}',
-              jsx_fragment = '{/* %s */}',
-              jsx_attribute = '// %s',
-              comment = '// %s',
-            },
-            typescript = { __default = '// %s', __multiline = '/* %s */' },
-          },
-        }
-      })
-    end,
+    opts = {
+      ensure_installed = {
+        'bash',
+        'c',
+        'cpp',
+        'css',
+        'dockerfile',
+        'go',
+        'gomod',
+        'graphql',
+        'html',
+        'javascript',
+        'json',
+        'lua',
+        'python',
+        'rust',
+        'scss',
+        'typescript',
+        'yaml',
+      },
+      highlight = {
+        enable = true,
+      },
+    },
+
   }
 }
 --
