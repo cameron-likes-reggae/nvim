@@ -41,17 +41,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.opt.pumblend = 80
+vim.opt.winblend = 80
+
 local cmp = require('cmp')
 cmp.setup({
   window = {
-    completion = {
-      border = "none",
-      winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
-    },
-    documentation = {
-      border = "none",
-      winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
-    },
+    completion = cmp.config.window.bordered({
+      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+    }),
   },
   formatting = {
     format = require('lspkind').cmp_format({
