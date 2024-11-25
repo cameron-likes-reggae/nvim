@@ -1,6 +1,6 @@
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'ts_ls', 'tailwindcss', 'html', 'cssls', 'jsonls', },
+  ensure_installed = { 'lua_ls', 'ts_ls','gopls', 'tailwindcss', 'html', 'cssls', 'jsonls', },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
@@ -54,20 +54,18 @@ cmp.setup({
     },
   },
   formatting = {
-    format = require("lspkind").cmp_format({
-      mode = 'symbol',
-      maxwidth = {
-        menu = 50,
-        abbr = 50,
+    format = require('lspkind').cmp_format({
+      mode = "symbol",
+      max_width = 50,
+      symbol_map = {
+        Copilot = "",
       },
-      ellipsis_char = '…',
     }),
   },
   sources = {
-    { name = 'nvim_lsp' },
-    -- { name = 'buffer' },
-    -- { name = 'path' },
-    -- { name = 'calc' },
+    { name = 'copilot', },
+    { name = "nvim_lsp" },
+    { name = "path" },
   },
   snippet = {
     expand = function(args)
@@ -75,5 +73,7 @@ cmp.setup({
       vim.snippet.expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({}),
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping.confirm({ select = true })
+  }),
 })

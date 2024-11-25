@@ -25,9 +25,9 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
 
+  -- Startup time
   {
     "dstein64/vim-startuptime",
-    cmd = "StartupTime",
-  }
-
+    cmd = "StartupTime"
+  },
 }

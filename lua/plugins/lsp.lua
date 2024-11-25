@@ -4,29 +4,48 @@ return {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-buffer",
       'hrsh7th/cmp-nvim-lsp',
+    },
+    event = { "InsertEnter", "CmdlineEnter" },
+    opts = {
+      window = {
+        completion = {
+          border = "none",
+          winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
+        }
+      }
     },
   },
   { "onsails/lspkind.nvim" },
 
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  {
+    'zbirenbaum/copilot-cmp',
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
+
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
     opts = {
       suggestion = {
-        enabled = true,
+        enabled = false,
         auto_trigger = true,
-        keymap = {
-          accept = "<M-y>",
-          dismiss = "<M-]>",
-        },
       },
-      panel = { enabled = false },
+      panel = {
+        enabled = false
+      }
     },
+  },
+  {
+    "onsails/lspkind.nvim",
+    config = function()
+      require("lspkind").init({})
+    end,
   },
 
   {
