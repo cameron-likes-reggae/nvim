@@ -56,6 +56,10 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
+-- Opacity of floating windows
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
+
 require("lazy").setup({
   spec = {
     { import = "plugins" },

@@ -10,7 +10,6 @@ return {
 
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
-  { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-path" },
   {
     'zbirenbaum/copilot-cmp',

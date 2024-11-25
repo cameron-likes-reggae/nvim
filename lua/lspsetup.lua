@@ -41,25 +41,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.opt.pumblend = 80
-vim.opt.winblend = 80
-
 local cmp = require('cmp')
 cmp.setup({
   window = {
     completion = cmp.config.window.bordered({
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
     }),
     documentation = cmp.config.window.bordered({
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
     }),
   },
   formatting = {
     format = require('lspkind').cmp_format({
       mode = "symbol",
-      max_width = 50,
+      max_width = 100,
       symbol_map = {
-        Copilot = "",
+        Copilot = " ",
       },
     }),
   },
@@ -74,7 +71,12 @@ cmp.setup({
       vim.snippet.expand(args.body)
     end,
   },
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
+  preselect = cmp.PreselectMode.Item,
   mapping = cmp.mapping.preset.insert({
-    ['<Tab>'] = cmp.mapping.confirm({ select = true })
+    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
   }),
 })

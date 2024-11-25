@@ -30,4 +30,11 @@ return {
     "dstein64/vim-startuptime",
     cmd = "StartupTime"
   },
+
+  -- Auto Close Brackets
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true
+  },
 }
