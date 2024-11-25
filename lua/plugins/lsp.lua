@@ -2,18 +2,8 @@ return {
   { 'neovim/nvim-lspconfig' },
   {
     'hrsh7th/nvim-cmp',
-    event = "InsertEnter",
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-    },
-    event = { "InsertEnter", "CmdlineEnter" },
-    opts = {
-      window = {
-        completion = {
-          border = "none",
-          winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
-        }
-      }
     },
   },
   { "onsails/lspkind.nvim" },
