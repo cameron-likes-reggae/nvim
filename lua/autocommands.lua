@@ -1,7 +1,7 @@
 local buffer_autoformat = function(bufnr)
   local group = 'lsp_autoformat'
-  vim.api.nvim_create_augroup(group, {clear = false})
-  vim.api.nvim_clear_autocmds({group = group, buffer = bufnr})
+  vim.api.nvim_create_augroup(group, { clear = false })
+  vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
 
   vim.api.nvim_create_autocmd('BufWritePre', {
     buffer = bufnr,
@@ -9,7 +9,7 @@ local buffer_autoformat = function(bufnr)
     desc = 'LSP format on save',
     callback = function()
       -- note: do not enable async formatting
-      vim.lsp.buf.format({async = false, timeout_ms = 10000})
+      vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
     end,
   })
 end
@@ -38,10 +38,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  desc = "Syntax highlighting when leaving insert mode",
-  group = vim.api.nvim_create_augroup("enable_buf_hl", { clear = true }),
-  callback = function()
-    vim.cmd([[TSBufEnable highlight]])
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   desc = "Syntax highlighting when leaving insert mode",
+--   group = vim.api.nvim_create_augroup("enable_buf_hl", { clear = true }),
+--   callback = function()
+--     vim.cmd([[TSBufEnable highlight]])
+--   end,
+-- })

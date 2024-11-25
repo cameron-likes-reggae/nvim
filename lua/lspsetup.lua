@@ -1,6 +1,6 @@
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'ts_ls' },
+  ensure_installed = { 'lua_ls', 'ts_ls', 'tailwindcss', 'html', 'cssls', 'jsonls', },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
@@ -26,7 +26,7 @@ lspconfig_defaults.capabilities = vim.tbl_deep_extend(
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
-    local opts = {buffer = event.buf}
+    local opts = { buffer = event.buf }
 
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -36,15 +36,38 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
 })
 
 local cmp = require('cmp')
 cmp.setup({
+  window = {
+    completion = {
+      border = "none",
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
+    },
+    documentation = {
+      border = "none",
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
+    },
+  },
+  formatting = {
+    format = require("lspkind").cmp_format({
+      mode = 'symbol',
+      maxwidth = {
+        menu = 50,
+        abbr = 50,
+      },
+      ellipsis_char = '…',
+    }),
+  },
   sources = {
-    {name = 'nvim_lsp'},
+    { name = 'nvim_lsp' },
+    -- { name = 'buffer' },
+    -- { name = 'path' },
+    -- { name = 'calc' },
   },
   snippet = {
     expand = function(args)

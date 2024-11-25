@@ -60,9 +60,10 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  install = {
-    colorscheme = { "kanagawa" }
-  },
 
   checker = { enabled = true, notify = false },
 })
+
+require("mappings")
+require("lspsetup")
+require("autocommands")

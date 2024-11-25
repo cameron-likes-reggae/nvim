@@ -1,17 +1,15 @@
 return {
   { 'neovim/nvim-lspconfig' },
-  { 'hrsh7th/cmp-nvim-lsp' },
   {
     'hrsh7th/nvim-cmp',
-    opts = {
-      window = {
-        completion = {
-          border = "none",
-          winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat",
-        }
-      }
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      'hrsh7th/cmp-nvim-lsp',
     },
   },
+  { "onsails/lspkind.nvim" },
+
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
   {
@@ -35,72 +33,51 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
     config = function()
-      require('nvim-treesitter.configs').setup({
-        context_commentstring = {
-          config = {
-            javascript = {
-              __default = '// %s',
-              jsx_element = '{/* %s */}',
-              jsx_fragment = '{/* %s */}',
-              jsx_attribute = '// %s',
-              comment = '// %s',
-            },
-            typescript = { __default = '// %s', __multiline = '/* %s */' },
-          },
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = {
+          "bash",
+          "c",
+          "cpp",
+          "css",
+          "dockerfile",
+          "go",
+          "graphql",
+          "html",
+          "javascript",
+          "json",
+          "lua",
+          "python",
+          "rust",
+          "scss",
+          "typescript",
+          "tsx",
+          "yaml",
+          "toml",
+        },
+        sync_install = false,
+        auto_install = true,
+        highlight = {
+          enable = true
         }
-      })
+      }
     end,
-  }
+  },
+
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig",         -- optional
+    },
+    opts = {}                          -- your configuration
+  },
+
+
+  {
+    "dgagn/diagflow.nvim",
+    event = "BufRead",
+  },
 }
---
---   {
---     "folke/lsp-colors.nvim",
---   },
---
---   -- LSP Zero for Language servers
---   "VonHeikemen/lsp-zero.nvim",
---   { "williamboman/mason.nvim" },
---   { "williamboman/mason-lspconfig.nvim" },
---   -- LSP Support
---   { "neovim/nvim-lspconfig" },
---   { "stevearc/conform.nvim",            opts = {} },
---   { "tikhomirov/vim-glsl" },
---
---   -- CMP
---   { "hrsh7th/nvim-cmp" },
---   { "hrsh7th/cmp-nvim-lsp" },
---   { "hrsh7th/cmp-buffer" },
---   { "hrsh7th/cmp-path" },
---   { "hrsh7th/cmp-cmdline" },
---   { "hrsh7th/cmp-calc" },
---   { "onsails/lspkind.nvim" },
---   {
---     "zbirenbaum/copilot.lua",
---     cmd = "Copilot",
---     event = "InsertEnter",
---     config = function()
---       require("copilot").setup({
---         suggestion = {
---           enabled = true,
---           auto_trigger = true,
---           keymap = {
---             accept = "<M-y>",
---             dismiss = "<M-]>",
---           },
---         },
---         panel = { enabled = false },
---       })
---     end,
---   },
---
---   -- Diagnostics
---   { "folke/trouble.nvim" },
---   { "dgagn/diagflow.nvim" },
---
---
---   {
---     "JoosepAlviste/nvim-ts-context-commentstring",
---     opts = {}
---   }
---
--- }

@@ -2,11 +2,35 @@ return {
   -- Colorschemes
   {
     "rebelot/kanagawa.nvim",
-    opts = { transparent = true }
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("kanagawa").setup({
+        transparent = true })
+      vim.cmd("colorscheme kanagawa")
+    end,
   },
 
   -- Beautiful status bar
-  "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      options = {
+        icons_enabled = true,
+        theme = "auto",
+        component_separators = '¦',
+        section_separators = {
+          right = '',
+          left = '',
+        },
+      },
+      sections = {
+        lualine_a = {
+          { 'filename', path = 1 },
+        },
+      },
+    },
+  },
 
   -- File icons for file explorer
   "nvim-tree/nvim-web-devicons",

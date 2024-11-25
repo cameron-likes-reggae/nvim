@@ -1,5 +1,1 @@
 require("config.lazy")
-require("mappings")
-require("lspsetup")
-require("autocommands")
-vim.cmd("colorscheme kanagawa")
