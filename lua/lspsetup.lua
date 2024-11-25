@@ -41,6 +41,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+local has_words_before = function()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ''):sub(cursor[2], cursor[2]):match('%s')
+end
+
 local cmp = require('cmp')
 cmp.setup({
   window = {
@@ -55,20 +60,27 @@ cmp.setup({
     format = require('lspkind').cmp_format({
       mode = "symbol",
       max_width = 100,
+      preset = "codicons",
       symbol_map = {
         Copilot = " ",
       },
     }),
   },
   sources = {
-    { name = 'copilot', },
-    { name = "nvim_lsp" },
-    { name = "path" },
+    { name = "nvim_lsp", priority = 1000 },
+    { name = 'copilot',  prority = 750 },
+    { name = "path",     priority = 500 },
+    { name = "luasnip",  priority = 250 },
   },
   snippet = {
     expand = function(args)
-      -- You need Neovim v0.10 to use vim.snippet
-      vim.snippet.expand(args.body)
+      local luasnip = require('luasnip')
+      if not luasnip then
+        -- You need Neovim v0.10 to use vim.snippet
+        vim.snippet.expand(args.body)
+      else
+        require('luasnip').lsp_expand(args.body)
+      end
     end,
   },
   completion = {
@@ -78,5 +90,22 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
     ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      local luasnip = require('luasnip')
+      if cmp.visible() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
   }),
 })

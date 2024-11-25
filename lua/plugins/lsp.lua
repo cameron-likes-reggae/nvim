@@ -7,6 +7,20 @@ return {
     },
   },
   { "onsails/lspkind.nvim" },
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip").config.set_config({
+        history = true,
+        updateevents = "TextChanged,TextChangedI",
+      })
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+  },
+  { "saadparwaiz1/cmp_luasnip" },
 
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
