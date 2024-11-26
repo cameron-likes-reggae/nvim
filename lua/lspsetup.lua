@@ -89,18 +89,9 @@ cmp.setup({
   },
   preselect = cmp.PreselectMode.Item,
   mapping = cmp.mapping.preset.insert({
-    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.confirm({ select = false })
-      else
-        fallback()
-      end
-    end),
+
     ['<Tab>'] = cmp.mapping(function(fallback)
       local luasnip = require('luasnip')
       if cmp.visible() then
