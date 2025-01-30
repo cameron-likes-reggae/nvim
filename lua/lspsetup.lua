@@ -105,10 +105,8 @@ cmp.setup({
     end, { 'i', 's' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       local luasnip = require('luasnip')
-      if cmp.visible() then
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
       else
         fallback()
       end
