@@ -60,7 +60,7 @@ cmp.setup({
   formatting = {
     format = require('lspkind').cmp_format({
       mode = "symbol",
-      max_width = 100,
+      -- max_width = 100,
       preset = "codicons",
       symbol_map = {
         Copilot = " ",
@@ -89,9 +89,20 @@ cmp.setup({
   },
   preselect = cmp.PreselectMode.Item,
   mapping = cmp.mapping.preset.insert({
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-
+    ["<C-u>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.mapping.scroll_docs(-4)()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ["<C-d>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.mapping.scroll_docs(4)()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       local luasnip = require('luasnip')
       if cmp.visible() then

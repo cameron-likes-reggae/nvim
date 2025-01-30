@@ -27,6 +27,7 @@ return {
   { "hrsh7th/cmp-path" },
   {
     'zbirenbaum/copilot-cmp',
+    event = "InsertEnter",
     config = function()
       require("copilot_cmp").setup()
     end
@@ -34,6 +35,7 @@ return {
 
   {
     "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
     opts = {
       suggestion = {
         enabled = false,
@@ -54,6 +56,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ":TSUpdate",
+    event = { "BufRead" },
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
