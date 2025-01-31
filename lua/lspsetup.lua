@@ -1,6 +1,6 @@
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'ts_ls', 'gopls', 'tailwindcss', 'html', 'cssls', 'jsonls', },
+  ensure_installed = { 'lua_ls', 'gopls', 'tailwindcss', 'html', 'cssls', 'jsonls', },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
