@@ -99,6 +99,7 @@ return {
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
+    lazy = false,
     config = function()
       require('dashboard').setup {
         theme = 'hyper',

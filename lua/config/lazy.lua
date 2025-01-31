@@ -66,6 +66,9 @@ require("lazy").setup({
   },
 
   checker = { enabled = true, notify = false },
+  defaults = {
+    lazy = true
+  }
 })
 
 require("mappings")
