@@ -1,6 +1,10 @@
 return {
   -- Surround Words/Text with quotes, brackets etc.
-  "tpope/vim-surround",
+  {
+    "tpope/vim-surround",
+    event = "BufEnter",
+  },
+
 
   -- Commenting
   {
