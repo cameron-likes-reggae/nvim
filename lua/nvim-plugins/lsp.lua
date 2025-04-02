@@ -6,6 +6,9 @@ return {
       'hrsh7th/cmp-nvim-lsp',
     },
   },
+  {
+    'xzbdmw/colorful-menu.nvim',
+  },
   { "onsails/lspkind.nvim" },
   {
     "L3MON4D3/LuaSnip",
@@ -25,6 +28,10 @@ return {
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
   { "hrsh7th/cmp-path" },
+  {
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    event = "LspAttach"
+  },
   {
     'zbirenbaum/copilot-cmp',
     event = "InsertEnter",
@@ -105,6 +112,32 @@ return {
       "neovim/nvim-lspconfig",         -- optional
     },
     opts = {}                          -- your configuration
+  },
+
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach", -- Or `LspAttach`
+    priority = 1000,     -- needs to be loaded in first
+    config = function()
+      require('tiny-inline-diagnostic').setup({
+        preset = "simple",
+        options = {
+          enable_on_insert = true,
+        }
+      })
+      vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end
+  },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    event = "LspAttach",
+    config = function()
+      require('tiny-code-action').setup()
+    end
   },
 
 

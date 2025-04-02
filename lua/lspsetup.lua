@@ -37,10 +37,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+    vim.keymap.set('n', '<leader>gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    -- vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set('n', 'ga', '<cmd>lua require("tiny-code-action").code_action()<cr>', opts)
   end,
 })
 
@@ -66,20 +67,41 @@ local cmp_setup = function()
       }),
     },
     formatting = {
-      format = require('lspkind').cmp_format({
-        mode = "symbol",
-        -- max_width = 100,
-        preset = "codicons",
-        symbol_map = {
-          Copilot = " ",
-        },
-      }),
+      fields = { "kind", "abbr", "menu" },
+
+      format = function(entry, vim_item)
+        local kind = require("lspkind").cmp_format({
+          mode = "symbol",
+          preset = "codicons",
+          symbol_map = {
+            Copilot = "",
+          },
+        })(entry, vim.deepcopy(vim_item))
+        -- remove new line characters from the entry
+        entry.completion_item.label = entry.completion_item.label:gsub("\n", "")
+
+        local highlights_info = require("colorful-menu").cmp_highlights(entry)
+
+        -- highlight_info is nil means we are missing the ts parser, it's
+        -- better to fallback to use default `vim_item.abbr`. What this plugin
+        -- offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+        if highlights_info ~= nil then
+          vim_item.abbr_hl_group = highlights_info.highlights
+          vim_item.abbr = highlights_info.text
+        end
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        vim_item.kind = (strings[1] or "") .. " "
+        vim_item.menu = ""
+
+        return vim_item
+      end,
     },
     sources = {
-      { name = "nvim_lsp", priority = 1000 },
-      { name = 'copilot',  prority = 750 },
-      { name = "path",     priority = 500 },
-      { name = "luasnip",  priority = 250 },
+      { name = 'nvim_lsp_signature_help', priority = 1001 },
+      { name = "nvim_lsp",                priority = 1000 },
+      { name = 'copilot',                 prority = 750 },
+      { name = "path",                    priority = 500 },
+      { name = "luasnip",                 priority = 250 },
     },
     snippet = {
       expand = function(args)
@@ -111,14 +133,6 @@ local cmp_setup = function()
           fallback()
         end
       end, { 'i', 's' }),
-      -- ['<Tab>'] = cmp.mapping(function(fallback)
-      --   local luasnip = require('luasnip')
-      --   if luasnip.jumpable(1) then
-      --     luasnip.jump(1)
-      --   else
-      --     fallback()
-      --   end
-      -- end, { 'i', 's' }),
     }),
   })
 end

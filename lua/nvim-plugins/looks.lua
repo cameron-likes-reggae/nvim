@@ -91,6 +91,7 @@ return {
   -- LSP status
   {
     "j-hui/fidget.nvim",
+    event = "BufEnter",
     opts = {
       -- options
     },
