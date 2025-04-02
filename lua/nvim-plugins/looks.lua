@@ -39,6 +39,7 @@ return {
   -- Beautiful status bar
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     opts = {
       options = {
         icons_enabled = true,
@@ -99,8 +100,7 @@ return {
 
   {
     'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    lazy = false,
+    event = 'VeryLazy',
     config = function()
       require('dashboard').setup {
         theme = 'hyper',

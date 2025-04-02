@@ -39,6 +39,7 @@ return {
   -- Beautiful status bar
   {
     "nvim-lualine/lualine.nvim",
+    event = "VimEnter",
     opts = {
       options = {
         icons_enabled = true,

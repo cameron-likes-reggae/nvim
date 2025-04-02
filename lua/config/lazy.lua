@@ -26,20 +26,20 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 8
 vim.opt.relativenumber = true
 vim.opt.listchars = "tab:| ,lead:·,trail:·"
--- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
-vim.diagnostic.config({ virtual_text = false })
 vim.opt.title = true
 vim.opt.titlelen = 0
 vim.opt.titlestring = 'Nvim (%{expand("%:p")})'
 vim.o.pumheight = 8
 vim.opt.swapfile = false
--- vim.diagnostic.config({
---   virtual_text = {
---     source = "if_many",
---     prefix = "",
---   },
---   update_in_insert = true,
--- })
+-- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+vim.diagnostic.config({
+  -- virtual_text = {
+  --   source = "if_many",
+  --   prefix = "",
+  -- },
+  virtual_text = false,
+  update_in_insert = true,
+})
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
@@ -77,6 +77,12 @@ require("lazy").setup({
   checker = { enabled = true, notify = false },
   defaults = {
     lazy = true
+  },
+
+  ui = {
+    size = {
+      width = 1, height = 1
+    }
   }
 })
 

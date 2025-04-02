@@ -38,7 +38,7 @@ return {
       { "<leader>eg", "<cmd>Neogit<CR>" },
     },
     opts = {
-      kind = "floating"
+      kind = "replace"
     },
   },
 }
