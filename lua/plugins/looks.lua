@@ -20,7 +20,7 @@ return {
           local theme = colors.theme
           return {
             NormalFloat = { bg = "none" },
-            FloatBorder = { bg = "none" },
+            FloatBorder = { bg = "none", fg = theme.ui.bg_p2 },
             FloatTitle = { bg = "none" },
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
