@@ -59,15 +59,15 @@ local cmp_setup = function()
   local cmp = require('cmp')
   cmp.setup({
     window = {
-      completion = cmp.config.window.bordered({
+      completion = {
         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-      }),
-      documentation = cmp.config.window.bordered({
+      },
+      documentation = {
         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-      }),
+      },
     },
     formatting = {
-      fields = { "kind", "abbr", "menu" },
+      fields = { "menu", "abbr", "kind" },
 
       format = function(entry, vim_item)
         local kind = require("lspkind").cmp_format({

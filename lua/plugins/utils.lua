@@ -21,6 +21,7 @@ return {
   -- Join lines
   {
     'Wansmer/treesj',
+    event = "VeryLazy",
     keys = {
       { "<leader>m", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
     },
