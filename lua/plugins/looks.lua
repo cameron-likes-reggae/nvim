@@ -15,7 +15,7 @@ return {
             }
           }
         },
-        -- transparent = true,
+        transparent = vim.fn.has('macunix'),
         overrides = function(colors)
           local theme = colors.theme
           return {
@@ -100,7 +100,7 @@ return {
 
   {
     'nvimdev/dashboard-nvim',
-    event = 'VeryLazy',
+    lazy = false,
     config = function()
       require('dashboard').setup {
         theme = 'hyper',

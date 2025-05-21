@@ -17,3 +17,6 @@ vim.keymap.set("n", "<CR>", ":noh<CR>", { silent = true, noremap = true })
 -- Center view after search
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
+
+-- Open new buffer
+vim.keymap.set("n", '<leader>n', ":enew<CR>")
